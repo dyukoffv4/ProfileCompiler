@@ -10,12 +10,7 @@ def load_csv(path: str | Path, *, delimiter: str = ",") -> list[list[str]]:
         return list(csv.reader(file, delimiter=delimiter))
 
 
-def save_csv(
-    path: str | Path,
-    rows: list[list[str]],
-    *,
-    delimiter: str = ",",
-) -> None:
+def save_csv(path: str | Path, rows: list[list[str]], *, delimiter: str = ",") -> None:
     """Записать строки в CSV-файл."""
     target = Path(path)
     target.parent.mkdir(parents=True, exist_ok=True)

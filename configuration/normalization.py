@@ -53,3 +53,28 @@ def normalize_config(config: ConfigSource) -> ConfigNormalized:
             entries[entry_key] = list(dict.fromkeys(scripts))
 
     return normalized
+
+
+def restore_source_config(config: ConfigNormalized) -> ConfigSource:
+    """Преобразовать нормализованный конфиг обратно в исходную структуру."""
+    restored: ConfigSource = {}
+
+    for service, entries in config.items():
+        restored_entries: list[dict[str, object]] = []
+
+        for entry_key, scripts in entries.items():
+            method, separator, endpoint = entry_key.partition(" ")
+            if not separator or not method or not endpoint:
+                raise ValueError(f"Некорректный ключ endpoint: {entry_key}")
+
+            restored_entries.append(
+                {
+                    "type": method,
+                    "endpoint": endpoint,
+                    "scripts": list(scripts),
+                }
+            )
+
+        restored[service] = restored_entries
+
+    return restored

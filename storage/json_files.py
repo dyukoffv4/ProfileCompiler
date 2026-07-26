@@ -16,4 +16,4 @@ def save_json(path: str | Path, data: Any) -> None:
     target = Path(path)
     target.parent.mkdir(parents=True, exist_ok=True)
     with target.open("w", encoding="utf-8") as file:
-        json.dump(data, file, indent=4, ensure_ascii=False)
+        json.dump(data, file, indent=2, ensure_ascii=False)
