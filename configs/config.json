@@ -1,0 +1,88 @@
+{
+  "service_1 ": [
+    {
+      "endpoint": " /usr/get/{this}/123",
+      "type": "GET ",
+      "scripts": [
+        "UC02",
+        "UC02 "
+      ],
+      "bad_key": 0
+    },
+    {
+      "endpoint": "/usr/get/hello",
+      "type": "GET",
+      "scripts": [
+        "UC01",
+        "UC03"
+      ],
+      "bad_key": 1
+    },
+    {
+      "endpoint": " /usr/get/{}/123",
+      "type": "GET ",
+      "scripts": [
+        "UC01",
+        " UC04"
+      ],
+      "bad_key": 2
+    }
+  ],
+  "service_1": [
+    {
+      "endpoint": " /usr/reload",
+      "type": "GET ",
+      "scripts": [
+        "UC02"
+      ],
+      "bad_key": 0
+    },
+    {
+      "endpoint": "/usr/get/hello",
+      "type": "GET",
+      "scripts": [
+        "UC05",
+        "UC06"
+      ],
+      "bad_key": 1
+    },
+    {
+      "endpoint": " /usr/get/yyy/123",
+      "type": "GET ",
+      "scripts": [
+        "UC08",
+        " UC07"
+      ],
+      "bad_key": 2
+    }
+  ],
+  "service_2": [
+    {
+      "endpoint": " /usr/get/{this}/123",
+      "type": "GET ",
+      "scripts": [
+        "UC02",
+        "UC02 "
+      ],
+      "bad_key": 0
+    },
+    {
+      "endpoint": "/usr/get/hello",
+      "type": "GET",
+      "scripts": [
+        "UC01",
+        "UC03"
+      ],
+      "bad_key": 1
+    },
+    {
+      "endpoint": " /usr/get/{}/123",
+      "type": "GET ",
+      "scripts": [
+        "UC01",
+        " UC04"
+      ],
+      "bad_key": 2
+    }
+  ]
+}
