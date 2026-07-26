@@ -1,63 +1,22 @@
-"""Поиск, вывод и разрешение логических конфликтов конфигурации."""
+"""Проверка и объединение конфликтующих endpoint-шаблонов."""
 
 import re
 from collections import defaultdict
 
-from normalization import ConfigNormalized
+from configuration import ConfigNormalized
 
-
-class ScriptConflict:
-    def __init__(self, script: str, locations: tuple[str, ...]):
-        self.script = script
-        self.locations = locations
-
-
-class EndpointTemplateConflict:
-    def __init__(self, service: str, method: str, template: str, concrete_endpoint: str):
-        self.service = service
-        self.method = method
-        self.template = template
-        self.concrete_endpoint = concrete_endpoint
-
-
-def find_script_conflicts(config: ConfigNormalized) -> list[ScriptConflict]:
-    """Найти UC-скрипты, присутствующие в двух и более списках."""
-    script_locations: dict[str, list[str]] = defaultdict(list)
-
-    for service, entries in config.items():
-        for entry, scripts in entries.items():
-            for script in dict.fromkeys(scripts):
-                script_locations[script].append(f"{service}: {entry}")
-
-    return [
-        ScriptConflict(script=script, locations=tuple(locations))
-        for script, locations in sorted(script_locations.items())
-        if len(locations) >= 2
-    ]
-
-
-def print_script_conflicts(conflicts: list[ScriptConflict]) -> None:
-    """Вывести результат проверки пересечений UC-скриптов."""
-    if not conflicts:
-        print("Проверка скриптов: пересечений не найдено.")
-        return
-
-    print("Проверка скриптов: найдены пересечения:")
-    for conflict in conflicts:
-        print(f"\t{conflict.script}:")
-        for location in conflict.locations:
-            print(f"\t\t{location}")
+from .models import EndpointTemplateConflict
 
 
 def compile_endpoint_template(endpoint: str) -> re.Pattern[str]:
-    """Преобразовать endpoint с {} в regex для непустых сегментов пути."""
+    """Преобразовать endpoint с ``{}`` в regex непустых сегментов пути."""
     escaped_parts = (re.escape(part) for part in endpoint.split("{}"))
     pattern = "[^/]+".join(escaped_parts)
     return re.compile(f"^{pattern}$")
 
 
 def find_endpoint_template_conflicts(config: ConfigNormalized) -> list[EndpointTemplateConflict]:
-    """Найти конкретные endpoint, покрываемые шаблоном того же сервиса и метода."""
+    """Найти конкретные endpoint, покрываемые шаблоном сервиса и метода."""
     conflicts: list[EndpointTemplateConflict] = []
 
     for service, entries in config.items():
@@ -102,7 +61,7 @@ def print_endpoint_template_conflicts(conflicts: list[EndpointTemplateConflict])
 
 
 def merge_endpoint_template_conflicts(config: ConfigNormalized, conflicts: list[EndpointTemplateConflict]) -> ConfigNormalized:
-    """Перенести скрипты конкретных endpoint в шаблоны и удалить конкретные записи."""
+    """Перенести скрипты конкретных endpoint в шаблоны и удалить их."""
     for conflict in conflicts:
         entries = config[conflict.service]
         template_key = f"{conflict.method} {conflict.template}"

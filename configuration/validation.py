@@ -2,7 +2,6 @@
 
 from typing import Any
 
-
 REQUIRED_ENTRY_FIELDS = {"endpoint", "type", "scripts"}
 
 

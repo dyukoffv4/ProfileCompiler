@@ -1,0 +1,28 @@
+"""Загрузка, проверка и нормализация входного конфига."""
+
+import json
+from pathlib import Path
+
+from configuration import ConfigNormalized, normalize_config, validate_config_structure
+from storage import load_json
+
+
+def load_and_normalize_config(source_path: Path) -> ConfigNormalized | None:
+    """Загрузить JSON, проверить структуру и привести данные к единому виду."""
+    try:
+        source_config = load_json(source_path)
+    except OSError as error:
+        print(f"Не удалось прочитать конфиг '{source_path}': {error}")
+        return None
+    except json.JSONDecodeError as error:
+        print(f"Некорректный JSON в '{source_path}': {error}")
+        return None
+
+    if not validate_config_structure(source_config):
+        return None
+
+    try:
+        return normalize_config(source_config)
+    except ValueError as error:
+        print(error)
+        return None

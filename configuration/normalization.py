@@ -1,14 +1,10 @@
 """Нормализация и преобразование конфигурации."""
 
-from typing import Any
-
-
-ConfigSource = dict[str, list[dict[str, Any]]]
-ConfigNormalized = dict[str, dict[str, list[str]]]
+from .models import ConfigNormalized, ConfigSource
 
 
 def normalize_endpoint_template(endpoint: str) -> str:
-    """Заменить содержимое каждой пары фигурных скобок на единый шаблон {}."""
+    """Заменить содержимое каждой пары фигурных скобок на шаблон ``{}``."""
     ranges: list[tuple[int, int]] = []
     depth = 0
     start: int | None = None
@@ -30,15 +26,15 @@ def normalize_endpoint_template(endpoint: str) -> str:
         raise ValueError(f"Invalid endpoint: {endpoint}")
 
     offset = 0
-    for s_range, e_range in ranges:
-        endpoint = endpoint[:s_range - offset] + "{}" + endpoint[e_range - offset:]
-        offset += e_range - s_range - 2
+    for range_start, range_end in ranges:
+        endpoint = endpoint[: range_start - offset] + "{}" + endpoint[range_end - offset :]
+        offset += range_end - range_start - 2
 
     return endpoint
 
 
 def normalize_config(config: ConfigSource) -> ConfigNormalized:
-    """Очистить значения, объединить сервисы и сгруппировать одинаковые endpoint."""
+    """Очистить значения, объединить сервисы и сгруппировать endpoint."""
     normalized: ConfigNormalized = {}
 
     for raw_service, raw_entries in config.items():
@@ -50,7 +46,6 @@ def normalize_config(config: ConfigSource) -> ConfigNormalized:
             endpoint = normalize_endpoint_template(raw_entry["endpoint"].strip())
             scripts = [script.strip() for script in raw_entry["scripts"]]
             entry_key = f"{method} {endpoint}"
-
             service_entries.setdefault(entry_key, []).extend(scripts)
 
     for entries in normalized.values():
