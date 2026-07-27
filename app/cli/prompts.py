@@ -19,13 +19,3 @@ def ask_confirmation(prompt: str) -> bool:
             return False
 
         print("Введите 'да' для подтверждения или 'нет' для отказа.")
-
-
-def ask_to_continue(prompt: str) -> bool:
-    """Запросить решение продолжить или остановить обработку."""
-    return ask_confirmation(prompt)
-
-
-def ask_to_save(prompt: str = "Сохранить обработанный конфиг?") -> bool:
-    """Запросить подтверждение сохранения результата."""
-    return ask_confirmation(prompt)

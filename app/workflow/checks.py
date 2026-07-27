@@ -9,16 +9,14 @@ from conflicts import (
     print_script_conflicts,
 )
 
-from app.cli.prompts import ask_to_continue
+from app.cli.prompts import ask_confirmation
 
 
 def run_conflict_checks(config: ConfigNormalized) -> bool:
     """Провести проверки конфликтов и применить выбранные исправления."""
     script_conflicts = find_script_conflicts(config)
     print_script_conflicts(script_conflicts)
-    if script_conflicts and not ask_to_continue(
-        "Продолжить, несмотря на пересечения скриптов?"
-    ):
+    if script_conflicts and not ask_confirmation("Продолжить, несмотря на пересечения скриптов?"):
         print("Обработка остановлена на проверке скриптов.")
         return False
 
@@ -27,7 +25,7 @@ def run_conflict_checks(config: ConfigNormalized) -> bool:
     if not template_conflicts:
         return True
 
-    if not ask_to_continue("Объединить совпавшие endpoint в шаблоны и продолжить?"):
+    if not ask_confirmation("Объединить совпавшие endpoint в шаблоны и продолжить?"):
         print("Обработка остановлена на проверке шаблонов.")
         return False
 

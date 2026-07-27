@@ -4,14 +4,14 @@ import argparse
 from pathlib import Path
 
 DEFAULT_SOURCE_PATH = Path("configs/config.json")
-DEFAULT_OUTPUT_PATH = Path("configs/new_config.json")
+DEFAULT_OUTPUT_PATH = Path("results/profile.json")
 
 
 def build_argument_parser() -> argparse.ArgumentParser:
     """Создать парсер аргументов командной строки."""
     parser = argparse.ArgumentParser(
         description=(
-            "Проверить, нормализовать и сохранить конфигурацию профилей НТ. "
+            "Обработать конфиг и профиль. Сохранить конфиг и профиль. "
             "Относительные пути вычисляются от текущей рабочей директории."
         )
     )
@@ -21,6 +21,19 @@ def build_argument_parser() -> argparse.ArgumentParser:
         type=Path,
         default=DEFAULT_SOURCE_PATH,
         help=f"путь к исходному JSON-конфигу (по умолчанию: {DEFAULT_SOURCE_PATH})",
+    )
+    parser.add_argument(
+        "--config-output",
+        type=Path,
+        default=None,
+        help=f"путь для измененного JSON-конфига",
+    )
+    parser.add_argument(
+        "-p",
+        "--profile",
+        type=Path,
+        default=None,
+        help=f"путь к исходному CSV-профилю",
     )
     parser.add_argument(
         "-o",

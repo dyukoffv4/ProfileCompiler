@@ -10,5 +10,5 @@ __all__ = [
     "normalize_config",
     "normalize_endpoint_template",
     "restore_source_config",
-    "validate_config_structure",
+    "validate_config_structure"
 ]
