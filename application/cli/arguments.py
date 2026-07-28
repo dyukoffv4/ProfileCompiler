@@ -3,9 +3,6 @@
 import argparse
 from pathlib import Path
 
-DEFAULT_SOURCE_PATH = Path("configs/config.json")
-DEFAULT_OUTPUT_PATH = Path("results/profile.json")
-
 
 def build_argument_parser() -> argparse.ArgumentParser:
     """Создать парсер аргументов командной строки."""
@@ -19,8 +16,8 @@ def build_argument_parser() -> argparse.ArgumentParser:
         "-c",
         "--config",
         type=Path,
-        default=DEFAULT_SOURCE_PATH,
-        help=f"путь к исходному JSON-конфигу (по умолчанию: {DEFAULT_SOURCE_PATH})",
+        default=None,
+        help=f"путь к исходному JSON-конфигу",
     )
     parser.add_argument(
         "--config-output",
@@ -39,7 +36,7 @@ def build_argument_parser() -> argparse.ArgumentParser:
         "-o",
         "--output",
         type=Path,
-        default=DEFAULT_OUTPUT_PATH,
-        help=f"путь для результата (по умолчанию: {DEFAULT_OUTPUT_PATH})",
+        default=None,
+        help=f"путь для результата",
     )
     return parser

@@ -15,6 +15,10 @@ def process(config_path: Path, output_config_path: Path, profile_path: Path, out
     """Обработать конфиг и профиль. Сохранить конфиг и профиль."""
 
     print("Загрузка конфига")
+    if config_path is None:
+        print("Требуется указать JSON-файл конфига")
+        return False
+
     normalized_config = load_and_normalize_config(config_path)
     if normalized_config is None:
         return False
@@ -37,7 +41,11 @@ def process(config_path: Path, output_config_path: Path, profile_path: Path, out
 
     print('Сборка профиля')
     if profile_path is None:
-        print("Требуется указать исходный CSV-файл профиля")
+        print("Требуется указать исходный CSV-файл данных выгрузки")
+        return False
+
+    if output_profile_path is None:
+        print("Требуется указать путь сохранения профиля")
         return False
 
     normalized_profile = load_and_normalize_profile(profile_path)

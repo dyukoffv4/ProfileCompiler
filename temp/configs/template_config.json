@@ -1,52 +1,59 @@
 {
-  "service_1": [
-    {
-      "endpoint": "/usr/get/{this}/123",
-      "type": "GET",
-      "scripts": [
-        "UC02"
-      ]
-    },
-    {
-      "endpoint": "/usr/get1/hello",
-      "type": "GET",
-      "scripts": [
-        "UC01",
-        "UC03"
-      ]
-    },
-    {
-      "endpoint": " /usr/get/{}/123",
-      "type": "GET ",
-      "scripts": [
-        "UC01",
-        "UC04"
-      ]
-    }
-  ],
-  "service_2": [
-    {
-      "endpoint": " /usr/get/{this}/123",
-      "type": "GET ",
-      "scripts": [
-        "UC05"
-      ]
-    },
-    {
-      "endpoint": "/usr/get1/hello",
-      "type": "GET",
-      "scripts": [
-        "UC05",
-        "UC06"
-      ]
-    },
-    {
-      "endpoint": "/usr/get1/{}",
-      "type": "GET",
-      "scripts": [
-        "UC07",
-        "UC08"
-      ]
-    }
-  ]
+  "main": {
+    "service_1": [
+      {
+        "endpoint": "/usr/get/{this}/123",
+        "type": "GET",
+        "scripts": [
+          "UC02"
+        ]
+      },
+      {
+        "endpoint": "/usr/get1/hello",
+        "type": "GET",
+        "scripts": [
+          "UC01",
+          "UC03"
+        ]
+      },
+      {
+        "endpoint": " /usr/get/{}/123",
+        "type": "GET ",
+        "scripts": [
+          "UC01",
+          "UC04"
+        ]
+      }
+    ],
+    "service_2": [
+      {
+        "endpoint": " /usr/get/{this}/123",
+        "type": "GET ",
+        "scripts": [
+          "UC05"
+        ]
+      },
+      {
+        "endpoint": "/usr/get1/hello",
+        "type": "GET",
+        "scripts": [
+          "UC05",
+          "UC06"
+        ]
+      },
+      {
+        "endpoint": "/usr/get1/{}",
+        "type": "GET",
+        "scripts": [
+          "UC07",
+          "UC08"
+        ]
+      }
+    ]
+  },
+  "statics": {
+    "UC05": 100,
+    "UC09": 200,
+    "UC10": 200
+  }
 }
