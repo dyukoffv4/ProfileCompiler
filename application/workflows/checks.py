@@ -4,7 +4,6 @@ from domain.configuration import ConfigNormalized
 from domain.conflicts import (
     find_endpoint_template_conflicts,
     find_script_conflicts,
-    merge_endpoint_template_conflicts,
     print_endpoint_template_conflicts,
     print_script_conflicts,
 )
@@ -25,10 +24,8 @@ def run_conflict_checks(config: ConfigNormalized) -> bool:
     if not template_conflicts:
         return True
 
-    if not ask_confirmation("Объединить совпавшие endpoint в шаблоны и продолжить?"):
+    if not ask_confirmation("Продолжить, несмотря на совпавшие endpoint и продолжить?"):
         print("Обработка остановлена на проверке шаблонов.")
         return False
 
-    merge_endpoint_template_conflicts(config, template_conflicts)
-    print("Конкретные endpoint объединены с шаблонными.")
     return True

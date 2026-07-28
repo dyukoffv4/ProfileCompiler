@@ -17,7 +17,7 @@ def find_script_conflicts(config: ConfigNormalized) -> list[ScriptConflict]:
                 script_locations[script].append(f"{service}: {entry}")
 
     return [
-        ScriptConflict(script=script, locations=tuple(locations))
+        ScriptConflict(script, tuple(locations))
         for script, locations in sorted(script_locations.items())
         if len(locations) >= 2
     ]

@@ -31,7 +31,7 @@ def process(config_path: Path, output_config_path: Path, profile_path: Path, out
         return False
 
     if output_config_path is None or not ask_confirmation("Сохранить измененный конфиг?"):
-        print("Новый конфиг не будет сохранен.")
+        print("Новый конфиг не будет сохранен. Чтобы сохранить его укажите путь через --output-config.")
     else:
         if _check_path_available(output_config_path):
             print("Данный путь занят. Укажите другой путь через --output-config.")
@@ -49,8 +49,9 @@ def process(config_path: Path, output_config_path: Path, profile_path: Path, out
         return False
 
     if _check_path_available(output_profile_path):
-        print("Данный путь занят. Укажите другой путь через --output.")
-        return False
+        if not ask_confirmation(f"Файл '{output_profile_path}' уже существует. Перезаписать его?"):
+            print("Файл профиля не будет перезаписан.")
+            return False
 
     try:
         result_profile = create_profile_on_config(normalized_profile, normalized_config)
