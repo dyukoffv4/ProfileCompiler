@@ -1,4 +1,4 @@
-"""Проверка и нормализация конфигурации."""
+"""Публичный API работы с конфигурацией."""
 
 from .models import ConfigNormalized, ConfigSource
 from .normalization import normalize_config, normalize_endpoint_template, restore_source_config
@@ -10,5 +10,5 @@ __all__ = [
     "normalize_config",
     "normalize_endpoint_template",
     "restore_source_config",
-    "validate_config_structure"
+    "validate_config_structure",
 ]

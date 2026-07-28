@@ -1,15 +1,6 @@
-"""Точка входа CLI-приложения профилей нагрузочного тестирования."""
+"""Совместимая точка запуска CLI из корня проекта."""
 
-from collections.abc import Sequence
-
-from app.cli.arguments import build_argument_parser
-from app.workflow.processing import process
-
-
-def main(arguments: Sequence[str] | None = None) -> int:
-    """Разобрать аргументы CLI, запустить обработку и вернуть код завершения."""
-    args = build_argument_parser().parse_args(arguments)
-    return 0 if process(args.config, args.config_output, args.profile, args.output) else 1
+from application.cli import main
 
 
 if __name__ == "__main__":

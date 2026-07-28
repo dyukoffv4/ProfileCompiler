@@ -2,10 +2,10 @@
 
 from pathlib import Path
 
-from app.cli.prompts import ask_confirmation
-from configuration import restore_source_config
-from profile import create_profile_on_config
-from storage import save_json
+from application.cli.prompts import ask_confirmation
+from domain.configuration import restore_source_config
+from domain.profile import create_profile_on_config
+from infrastructure.storage import save_json
 
 from .checks import run_conflict_checks
 from .loading import load_and_normalize_config, load_and_normalize_profile

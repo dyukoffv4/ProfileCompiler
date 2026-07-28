@@ -3,7 +3,7 @@
 import math
 
 from .models import ProfileNormalized, ProfileSource, ProfileResult
-from configuration import normalize_endpoint_template, ConfigNormalized
+from domain.configuration import normalize_endpoint_template, ConfigNormalized
 
 
 def normalize_profile(source: ProfileSource) -> ProfileNormalized:

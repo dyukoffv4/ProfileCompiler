@@ -4,9 +4,9 @@ import json
 import csv
 from pathlib import Path
 
-from configuration import ConfigNormalized, normalize_config, validate_config_structure
-from profile import ProfileNormalized, normalize_profile
-from storage import load_json, load_csv
+from domain.configuration import ConfigNormalized, normalize_config, validate_config_structure
+from domain.profile import ProfileNormalized, normalize_profile
+from infrastructure.storage import load_json, load_csv
 
 
 def load_and_normalize_config(source_path: Path) -> ConfigNormalized | None:

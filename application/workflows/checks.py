@@ -1,7 +1,7 @@
 """Последовательность интерактивных проверок конфигурации."""
 
-from configuration import ConfigNormalized
-from conflicts import (
+from domain.configuration import ConfigNormalized
+from domain.conflicts import (
     find_endpoint_template_conflicts,
     find_script_conflicts,
     merge_endpoint_template_conflicts,
@@ -9,7 +9,7 @@ from conflicts import (
     print_script_conflicts,
 )
 
-from app.cli.prompts import ask_confirmation
+from application.cli.prompts import ask_confirmation
 
 
 def run_conflict_checks(config: ConfigNormalized) -> bool:

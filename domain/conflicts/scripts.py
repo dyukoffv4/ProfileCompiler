@@ -2,7 +2,7 @@
 
 from collections import defaultdict
 
-from configuration import ConfigNormalized
+from domain.configuration import ConfigNormalized
 
 from .models import ScriptConflict
 
