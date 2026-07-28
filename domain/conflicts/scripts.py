@@ -3,34 +3,33 @@
 from collections import defaultdict
 
 from domain.configuration import ConfigNormalized
-
 from .models import ScriptConflict
 
 
 def find_script_conflicts(config: ConfigNormalized) -> list[ScriptConflict]:
-    """Найти UC-скрипты, присутствующие в двух и более списках."""
-    script_locations: dict[str, list[str]] = defaultdict(list)
-
-    for service, entries in config.items():
+    locations = defaultdict(list)
+    for service, entries in config.services.items():
         for entry, scripts in entries.items():
             for script in dict.fromkeys(scripts):
-                script_locations[script].append(f"{service}: {entry}")
-
-    return [
-        ScriptConflict(script, tuple(locations))
-        for script, locations in sorted(script_locations.items())
-        if len(locations) >= 2
-    ]
+                locations[script].append(f"{service}: {entry}")
+    return [ScriptConflict(s, tuple(v)) for s, v in sorted(locations.items()) if len(v) >= 2]
 
 
-def print_script_conflicts(conflicts: list[ScriptConflict]) -> None:
-    """Вывести результат проверки пересечений UC-скриптов."""
+def find_static_script_conflicts(config: ConfigNormalized) -> list[str]:
+    static = set(config.statics)
+    main = {s for entries in config.services.values() for scripts in entries.values() for s in scripts}
+    return sorted(static & main)
+
+
+def print_script_conflicts(conflicts):
     if not conflicts:
         print("Проверка скриптов: пересечений не найдено.")
         return
-
     print("Проверка скриптов: найдены пересечения:")
     for conflict in conflicts:
-        print(f"\t{conflict.script}:")
-        for location in conflict.locations:
-            print(f"\t\t{location}")
+        if isinstance(conflict, str):
+            print(f"\t{conflict}")
+        else:
+            print(f"\t{conflict.script}:")
+            for location in conflict.locations:
+                print(f"\t\t{location}")

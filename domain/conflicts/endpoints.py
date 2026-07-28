@@ -19,7 +19,7 @@ def find_endpoint_template_conflicts(config: ConfigNormalized) -> list[EndpointT
     """Найти конкретные endpoint, покрываемые шаблоном сервиса и метода."""
     conflicts: list[EndpointTemplateConflict] = []
 
-    for service, entries in config.items():
+    for service, entries in config.services.items():
         endpoints_by_method: dict[str, list[str]] = defaultdict(list)
 
         for entry in entries:
