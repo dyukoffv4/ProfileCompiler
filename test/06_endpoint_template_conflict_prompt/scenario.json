@@ -1,0 +1,8 @@
+{
+  "title": "Пересечение шаблонного и конкретного endpoint",
+  "description": "GET /users/{} покрывает GET /users/admin, поэтому проверка endpoint должна запросить продолжение. После согласия оба ключа остаются самостоятельными в профиле.",
+  "expected_status": "prompt_then_success",
+  "expected_prompts": [
+    "Продолжить, несмотря на совпавшие endpoint?"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "main": {
+    " orders-service ": [
+      {
+        "endpoint": " /orders/{order_id} ",
+        "type": " GET ",
+        "scripts": [
+          " UC_ORDER_READ ",
+          "UC_ORDER_READ",
+          " UC_AUDIT "
+        ]
+      },
+      {
+        "endpoint": "/orders/{id}",
+        "type": "GET",
+        "scripts": [
+          "UC_ORDER_CACHE",
+          "UC_AUDIT"
+        ]
+      },
+      {
+        "endpoint": " /orders ",
+        "type": " POST ",
+        "scripts": [
+          " UC_ORDER_CREATE "
+        ]
+      }
+    ],
+    "orders-service": [
+      {
+        "endpoint": "/orders/{uuid}",
+        "type": "DELETE",
+        "scripts": [
+          "UC_ORDER_DELETE"
+        ]
+      }
+    ]
+  },
+  "statics": {}
+}

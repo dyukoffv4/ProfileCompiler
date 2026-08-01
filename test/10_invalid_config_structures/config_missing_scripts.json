@@ -1,0 +1,11 @@
+{
+  "main": {
+    "broken-service": [
+      {
+        "endpoint": "/broken",
+        "type": "GET"
+      }
+    ]
+  },
+  "statics": {}
+}

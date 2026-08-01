@@ -1,0 +1,6 @@
+billing-service - POST - /api/payments,800,400,40000
+billing-service - GET - /api/payments/{paymentId},400,200,20000
+billing-service - DELETE - /api/payments/{paymentId},200,100,10000
+notification-service - POST - /api/email,300,150,15000
+notification-service - POST - /api/sms,100,50,5000
+search-service - GET - /api/search,600,300,30000

@@ -1,0 +1,8 @@
+{
+  "user-service": {
+    "total_intensity": 130,
+    "covered_intensity": 130,
+    "coverage_percent": 100.0,
+    "uncovered_endpoints": {}
+  }
+}

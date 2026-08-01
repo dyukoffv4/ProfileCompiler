@@ -1,0 +1,31 @@
+{
+  "main": {
+    "service-a": [
+      {
+        "endpoint": "/a",
+        "type": "GET",
+        "scripts": [
+          "UC_SHARED"
+        ]
+      },
+      {
+        "endpoint": "/a",
+        "type": "POST",
+        "scripts": [
+          "UC_A_CREATE"
+        ]
+      }
+    ],
+    "service-b": [
+      {
+        "endpoint": "/b",
+        "type": "GET",
+        "scripts": [
+          "UC_SHARED",
+          "UC_B_READ"
+        ]
+      }
+    ]
+  },
+  "statics": {}
+}

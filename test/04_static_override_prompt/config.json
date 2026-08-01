@@ -1,0 +1,24 @@
+{
+  "main": {
+    "inventory-service": [
+      {
+        "endpoint": "/inventory/{id}",
+        "type": "GET",
+        "scripts": [
+          "UC_INVENTORY_READ"
+        ]
+      },
+      {
+        "endpoint": "/inventory/reindex",
+        "type": "POST",
+        "scripts": [
+          "UC_REINDEX"
+        ]
+      }
+    ]
+  },
+  "statics": {
+    " UC_INVENTORY_READ ": 999,
+    "UC_STATIC_ONLY": 50
+  }
+}

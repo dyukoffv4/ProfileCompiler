@@ -1,0 +1,4 @@
+metrics-service - GET - /metrics/a,1,0,10
+metrics-service - GET - /metrics/b,1,0.01,10
+metrics-service - GET - /metrics/c,2,1.01,10
+metrics-service - GET - /metrics/c,3,2.01,10

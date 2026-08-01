@@ -1,0 +1,7 @@
+{
+  "UC_ORDER_READ": 6,
+  "UC_AUDIT": 6,
+  "UC_ORDER_CACHE": 6,
+  "UC_ORDER_CREATE": 7,
+  "UC_ORDER_DELETE": 3
+}

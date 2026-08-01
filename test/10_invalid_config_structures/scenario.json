@@ -1,0 +1,22 @@
+{
+  "title": "Ошибки структурной валидации конфига",
+  "description": "Три независимых некорректных конфига для проверки validate_config_structure.",
+  "expected_status": "config_validation_error",
+  "cases": [
+    {
+      "file": "config_missing_scripts.json",
+      "expected": "Отсутствует обязательное поле scripts.",
+      "validation_result": false
+    },
+    {
+      "file": "config_invalid_statics.json",
+      "expected": "Значение statics является строкой, а должно быть int.",
+      "validation_result": false
+    },
+    {
+      "file": "config_invalid_main.json",
+      "expected": "Блок main является списком, а должен быть словарём сервисов.",
+      "validation_result": false
+    }
+  ]
+}

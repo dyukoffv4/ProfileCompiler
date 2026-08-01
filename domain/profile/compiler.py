@@ -1,18 +1,21 @@
-"""Нормализация и загрузка профиля."""
+"""Нормализация и сборка профиля нагрузки."""
 
 import math
 
-from .models import ProfileNormalized, ProfileSource, ProfileResult
 from domain.configuration import ConfigNormalized, normalize_endpoint_template
+
+from .models import ProfileNormalized, ProfileResult, ProfileSource
 
 
 def normalize_profile(source: ProfileSource) -> ProfileNormalized:
     result = {}
-    for i in source:
-        _service, _type, _endpoint = i[0].split(' - ')
-        _max, _mean, _count = i[1:]
-        result.setdefault(_service.strip(), {}).setdefault(f'{_type.strip()} {normalize_endpoint_template(_endpoint)}', 0)
-        result[_service.strip()][f'{_type.strip()} {normalize_endpoint_template(_endpoint)}'] += math.ceil(float(_mean))
+    for row in source:
+        service, method, endpoint = row[0].split(" - ")
+        _maximum, mean, _count = row[1:]
+        normalized_entry = f"{method.strip()} {normalize_endpoint_template(endpoint)}"
+        service_entries = result.setdefault(service.strip(), {})
+        service_entries.setdefault(normalized_entry, 0)
+        service_entries[normalized_entry] += math.ceil(float(mean))
     return result
 
 

@@ -1,0 +1,4 @@
+auth-service - GET - /api/users/{id},240.0,120.2,10000
+auth-service - POST - /api/login,150.0,80,5000
+catalog-service - GET - /api/products,400.0,200,20000
+catalog-service - GET - /api/products/{sku},120.0,60.4,6000

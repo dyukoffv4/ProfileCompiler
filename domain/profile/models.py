@@ -1,4 +1,4 @@
-"""Типы данных конфигурации."""
+"""Типы данных профиля нагрузки."""
 
 ProfileSource = list[list[str]]
 ProfileNormalized = dict[str, dict[str, int]]

@@ -1,0 +1,3 @@
+case-service - get - /case,20,10,1000
+Case-Service - GET - /case,40,20,2000
+case-service - GET - /case,60,30,3000

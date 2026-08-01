@@ -1,0 +1,14 @@
+{
+  "main": {
+    "valid-service": [
+      {
+        "endpoint": "/ok",
+        "type": "GET",
+        "scripts": [
+          "UC_OK"
+        ]
+      }
+    ]
+  },
+  "statics": {}
+}

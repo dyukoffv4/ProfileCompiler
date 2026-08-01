@@ -1,0 +1,8 @@
+{
+  "metrics-service": {
+    "total_intensity": 6,
+    "covered_intensity": 6,
+    "coverage_percent": 100.0,
+    "uncovered_endpoints": {}
+  }
+}

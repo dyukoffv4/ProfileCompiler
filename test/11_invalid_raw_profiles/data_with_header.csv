@@ -1,0 +1,2 @@
+endpoint,maximum,mean,count
+valid-service - GET - /ok,10,5,100

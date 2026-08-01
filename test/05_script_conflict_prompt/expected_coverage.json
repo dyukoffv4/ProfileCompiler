@@ -1,0 +1,14 @@
+{
+  "service-a": {
+    "total_intensity": 70,
+    "covered_intensity": 70,
+    "coverage_percent": 100.0,
+    "uncovered_endpoints": {}
+  },
+  "service-b": {
+    "total_intensity": 50,
+    "covered_intensity": 50,
+    "coverage_percent": 100.0,
+    "uncovered_endpoints": {}
+  }
+}

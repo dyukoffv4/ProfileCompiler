@@ -1,0 +1,16 @@
+{
+  "main": {
+    "broken-service": [
+      {
+        "endpoint": "/broken",
+        "type": "GET",
+        "scripts": [
+          "UC_BROKEN"
+        ]
+      }
+    ]
+  },
+  "statics": {
+    "UC_STATIC": "100"
+  }
+}

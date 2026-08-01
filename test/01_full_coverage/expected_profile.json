@@ -1,0 +1,8 @@
+{
+  "UC_USERS": 61,
+  "UC_AUDIT": 61,
+  "UC_LOGIN": 80,
+  "UC_PRODUCTS": 200,
+  "UC_PRODUCT_DETAIL": 61,
+  "UC_HEALTHCHECK": 25
+}

@@ -1,0 +1,4 @@
+orders-service - GET - /orders/{uuid},30,10.2,1000
+orders-service - GET - /orders/{item},15,4.1,500
+orders-service - POST - /orders,15,7.0,700
+orders-service - DELETE - /orders/{order_id},8,2.2,220

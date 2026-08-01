@@ -1,0 +1,8 @@
+{
+  "inventory-service": {
+    "total_intensity": 120,
+    "covered_intensity": 120,
+    "coverage_percent": 100.0,
+    "uncovered_endpoints": {}
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "main": {
+    "system-service": [
+      {
+        "endpoint": "/status",
+        "type": "GET",
+        "scripts": [
+          "UC_STATUS"
+        ]
+      }
+    ]
+  },
+  "statics": {
+    "UC_DUP": 10,
+    " UC_DUP ": 20
+  }
+}

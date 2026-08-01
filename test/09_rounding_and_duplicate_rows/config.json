@@ -1,0 +1,28 @@
+{
+  "main": {
+    "metrics-service": [
+      {
+        "endpoint": "/metrics/a",
+        "type": "GET",
+        "scripts": [
+          "UC_METRIC_A"
+        ]
+      },
+      {
+        "endpoint": "/metrics/b",
+        "type": "GET",
+        "scripts": [
+          "UC_METRIC_B"
+        ]
+      },
+      {
+        "endpoint": "/metrics/c",
+        "type": "GET",
+        "scripts": [
+          "UC_METRIC_C"
+        ]
+      }
+    ]
+  },
+  "statics": {}
+}

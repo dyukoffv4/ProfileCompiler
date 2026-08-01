@@ -1,0 +1,26 @@
+{
+  "billing-service": {
+    "total_intensity": 700,
+    "covered_intensity": 600,
+    "coverage_percent": 85.71,
+    "uncovered_endpoints": {
+      "DELETE /api/payments/{}": 100
+    }
+  },
+  "notification-service": {
+    "total_intensity": 200,
+    "covered_intensity": 150,
+    "coverage_percent": 75.0,
+    "uncovered_endpoints": {
+      "POST /api/sms": 50
+    }
+  },
+  "search-service": {
+    "total_intensity": 300,
+    "covered_intensity": 0,
+    "coverage_percent": 0.0,
+    "uncovered_endpoints": {
+      "GET /api/search": 300
+    }
+  }
+}

@@ -1,0 +1,3 @@
+user-service - GET - /users/{userId},160,80,8000
+user-service - GET - /users/admin,40,20,2000
+user-service - GET - /users/{uuid}/roles,60,30,3000

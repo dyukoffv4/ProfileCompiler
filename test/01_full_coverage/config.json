@@ -1,0 +1,40 @@
+{
+  "main": {
+    "auth-service": [
+      {
+        "endpoint": "/api/users/{userId}",
+        "type": "GET",
+        "scripts": [
+          "UC_USERS",
+          "UC_AUDIT"
+        ]
+      },
+      {
+        "endpoint": "/api/login",
+        "type": "POST",
+        "scripts": [
+          "UC_LOGIN"
+        ]
+      }
+    ],
+    "catalog-service": [
+      {
+        "endpoint": "/api/products",
+        "type": "GET",
+        "scripts": [
+          "UC_PRODUCTS"
+        ]
+      },
+      {
+        "endpoint": "/api/products/{product_id}",
+        "type": "GET",
+        "scripts": [
+          "UC_PRODUCT_DETAIL"
+        ]
+      }
+    ]
+  },
+  "statics": {
+    "UC_HEALTHCHECK": 25
+  }
+}

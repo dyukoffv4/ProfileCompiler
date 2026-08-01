@@ -1,0 +1,14 @@
+{
+  "main": {
+    "case-service": [
+      {
+        "endpoint": "/case",
+        "type": "GET",
+        "scripts": [
+          "UC_CASE"
+        ]
+      }
+    ]
+  },
+  "statics": {}
+}

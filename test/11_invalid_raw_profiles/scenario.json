@@ -1,0 +1,22 @@
+{
+  "title": "Ошибки загрузки и нормализации сырого CSV-профиля",
+  "description": "Три независимых некорректных CSV-файла.",
+  "expected_status": "profile_normalization_error",
+  "cases": [
+    {
+      "file": "data_with_header.csv",
+      "expected": "Текущий normalize_profile не поддерживает строку заголовка.",
+      "actual_error": "not enough values to unpack (expected 3, got 1)"
+    },
+    {
+      "file": "data_missing_columns.csv",
+      "expected": "В строке не хватает одного из числовых столбцов.",
+      "actual_error": "not enough values to unpack (expected 3, got 2)"
+    },
+    {
+      "file": "data_invalid_mean.csv",
+      "expected": "Значение mean невозможно преобразовать в float.",
+      "actual_error": "could not convert string to float: 'not-a-number'"
+    }
+  ]
+}

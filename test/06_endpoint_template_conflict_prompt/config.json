@@ -1,0 +1,28 @@
+{
+  "main": {
+    "user-service": [
+      {
+        "endpoint": "/users/{id}",
+        "type": "GET",
+        "scripts": [
+          "UC_USER_DYNAMIC"
+        ]
+      },
+      {
+        "endpoint": "/users/admin",
+        "type": "GET",
+        "scripts": [
+          "UC_USER_ADMIN"
+        ]
+      },
+      {
+        "endpoint": "/users/{id}/roles",
+        "type": "GET",
+        "scripts": [
+          "UC_USER_ROLES"
+        ]
+      }
+    ]
+  },
+  "statics": {}
+}

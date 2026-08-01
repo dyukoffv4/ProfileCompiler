@@ -1,0 +1,5 @@
+{
+  "UC_PAY_CREATE": 400,
+  "UC_PAY_READ": 200,
+  "UC_EMAIL": 150
+}

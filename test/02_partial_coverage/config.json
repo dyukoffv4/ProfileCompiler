@@ -1,0 +1,30 @@
+{
+  "main": {
+    "billing-service": [
+      {
+        "endpoint": "/api/payments",
+        "type": "POST",
+        "scripts": [
+          "UC_PAY_CREATE"
+        ]
+      },
+      {
+        "endpoint": "/api/payments/{id}",
+        "type": "GET",
+        "scripts": [
+          "UC_PAY_READ"
+        ]
+      }
+    ],
+    "notification-service": [
+      {
+        "endpoint": "/api/email",
+        "type": "POST",
+        "scripts": [
+          "UC_EMAIL"
+        ]
+      }
+    ]
+  },
+  "statics": {}
+}

@@ -17,7 +17,7 @@ def run_conflict_checks(config: ConfigNormalized) -> bool:
 
     if static_conflicts:
         print("Пересечения статичных скриптов с основными:")
-        print("\\n".join(f"\\t{x}" for x in static_conflicts))
+        print("\n".join(f"\t{x}" for x in static_conflicts))
         if not ask_confirmation("Продолжить, несмотря на пересечения статичных скриптов?"):
             return False
 

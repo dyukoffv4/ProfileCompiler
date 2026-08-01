@@ -1,0 +1,8 @@
+{
+  "orders-service": {
+    "total_intensity": 26,
+    "covered_intensity": 26,
+    "coverage_percent": 100.0,
+    "uncovered_endpoints": {}
+  }
+}

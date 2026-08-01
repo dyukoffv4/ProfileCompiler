@@ -1,0 +1,14 @@
+{
+  "auth-service": {
+    "total_intensity": 201,
+    "covered_intensity": 201,
+    "coverage_percent": 100.0,
+    "uncovered_endpoints": {}
+  },
+  "catalog-service": {
+    "total_intensity": 261,
+    "covered_intensity": 261,
+    "coverage_percent": 100.0,
+    "uncovered_endpoints": {}
+  }
+}

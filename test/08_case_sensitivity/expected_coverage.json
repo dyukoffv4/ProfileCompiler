@@ -1,0 +1,18 @@
+{
+  "case-service": {
+    "total_intensity": 40,
+    "covered_intensity": 30,
+    "coverage_percent": 75.0,
+    "uncovered_endpoints": {
+      "get /case": 10
+    }
+  },
+  "Case-Service": {
+    "total_intensity": 20,
+    "covered_intensity": 0,
+    "coverage_percent": 0.0,
+    "uncovered_endpoints": {
+      "GET /case": 20
+    }
+  }
+}
