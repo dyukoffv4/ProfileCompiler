@@ -33,7 +33,7 @@ def _save_process(save_path: Path, save_data):
 def process(config_path: Path, output_config_path: Path, profile_path: Path, output_profile_path: Path) -> bool:
     # Обработать конфиг
 
-    print("Загрузка конфига")
+    print("\n--- Загрузка конфига ---\n")
     if config_path is None:
         print("Требуется указать JSON-файл конфига")
         return False
@@ -46,6 +46,7 @@ def process(config_path: Path, output_config_path: Path, profile_path: Path, out
 
     if not run_conflict_checks(normalized_config):
         return False
+    print()
 
     # Сохранить конфиг
 
@@ -56,7 +57,7 @@ def process(config_path: Path, output_config_path: Path, profile_path: Path, out
 
     # Обработать профиль
 
-    print('Сборка профиля')
+    print('\n--- Сборка профиля ---\n')
     if profile_path is None:
         print("Требуется указать исходный CSV-файл данных выгрузки")
         return False
@@ -67,7 +68,9 @@ def process(config_path: Path, output_config_path: Path, profile_path: Path, out
 
     # Проверить профиль
 
-    run_coverage_analysis(normalized_profile, normalized_config)
+    if not run_coverage_analysis(normalized_profile, normalized_config):
+        return False
+    print()
 
     # Сохранить профиль
 

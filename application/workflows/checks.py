@@ -12,6 +12,7 @@ def run_conflict_checks(config: ConfigNormalized) -> bool:
 
     if script_conflicts and not ask_confirmation("Продолжить, несмотря на пересечения скриптов?"):
         return False
+    print()
 
     static_conflicts = find_static_script_conflicts(config)
 
@@ -20,6 +21,7 @@ def run_conflict_checks(config: ConfigNormalized) -> bool:
         print("\n".join(f"\t{x}" for x in static_conflicts))
         if not ask_confirmation("Продолжить, несмотря на пересечения статичных скриптов?"):
             return False
+    print()
 
     template_conflicts = find_endpoint_template_conflicts(config)
     print_endpoint_template_conflicts(template_conflicts)

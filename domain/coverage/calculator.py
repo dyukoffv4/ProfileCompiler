@@ -20,10 +20,6 @@ def calculate_coverage(profile: ProfileNormalized, config: ConfigNormalized) -> 
         total_intensity = sum(profile_entries.values())
         uncovered_intensity = sum(uncovered_endpoints.values())
 
-        report[service] = ServiceCoverage(
-            total_intensity=total_intensity,
-            covered_intensity=total_intensity - uncovered_intensity,
-            uncovered_endpoints=uncovered_endpoints,
-        )
+        report[service] = ServiceCoverage(total_intensity, total_intensity - uncovered_intensity, uncovered_endpoints)
 
     return report
