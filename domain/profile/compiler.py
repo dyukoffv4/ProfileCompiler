@@ -10,10 +10,10 @@ from .models import ProfileNormalized, ProfileResult, ProfileSource
 def normalize_profile(source: ProfileSource) -> ProfileNormalized:
     result = {}
     for row in source:
-        service, method, endpoint = row[0].split(" - ")
-        _maximum, mean, _count = row[1:]
-        normalized_entry = f"{method.strip()} {normalize_endpoint_template(endpoint)}"
-        service_entries = result.setdefault(service.strip(), {})
+        service, method, endpoint = [i.strip() for i in row[0].split(" - ", maxsplit=2)]
+        maximum, mean = row[1:3]
+        normalized_entry = f"{method} {normalize_endpoint_template(endpoint)}"
+        service_entries = result.setdefault(service, {})
         service_entries.setdefault(normalized_entry, 0)
         service_entries[normalized_entry] += math.ceil(float(mean))
     return result

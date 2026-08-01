@@ -20,6 +20,7 @@ def build_argument_parser() -> argparse.ArgumentParser:
         help=f"путь к исходному JSON-конфигу",
     )
     parser.add_argument(
+        "-oc",
         "--config-output",
         type=Path,
         default=None,
@@ -33,8 +34,8 @@ def build_argument_parser() -> argparse.ArgumentParser:
         help=f"путь к исходному CSV-профилю",
     )
     parser.add_argument(
-        "-o",
-        "--output",
+        "-op",
+        "--profile-output",
         type=Path,
         default=None,
         help=f"путь для результата",

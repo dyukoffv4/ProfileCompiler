@@ -1,7 +1,0 @@
-service_1 - GET - /usr/get/{this}/123,60,60,60
-service_1 - GET - /usr/get1/hello,120,120,120
-service_1 - GET - /usr/reload,120,120,120
-service_1 - PUT - /usr/reload,60,60,60
-service_2 - GET - /usr/get/{this}/123,120,120,120
-service_2 - GET - /usr/get1/hello,60,60,60
-service_2 - GET - /usr/get1/{},120,120,120

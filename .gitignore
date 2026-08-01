@@ -4,6 +4,4 @@
 __pycache__/
 **/__pycache__/
 
-temp/**
-!temp/**/
-!temp/**/template_*
+temp/
