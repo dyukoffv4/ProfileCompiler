@@ -2,7 +2,7 @@
 
 import math
 
-from domain.configuration import ConfigNormalized, normalize_endpoint_template
+from domain.configuration import ConfigNormalized, EndpointConfig, normalize_endpoint_template
 
 from .models import ProfileNormalized, ProfileResult, ProfileSource
 
@@ -19,13 +19,37 @@ def normalize_profile(source: ProfileSource) -> ProfileNormalized:
     return result
 
 
+def _add_endpoint_scripts(result: ProfileResult, source_intensity: int, config: EndpointConfig) -> None:
+    scripts_intensity = source_intensity
+    if config.statics_diff:
+        scripts_intensity -= sum(config.statics.values())
+
+    if isinstance(config.scripts, list):
+        if config.scripts:
+            per_script = math.ceil(scripts_intensity / len(config.scripts))
+            for script in config.scripts:
+                result[script] = result.get(script, 0) + per_script
+    else:
+        for script, coefficient in config.scripts.items():
+            result[script] = result.get(script, 0) + math.ceil(scripts_intensity * coefficient)
+
+
+def _add_endpoint_statics(result: ProfileResult, config: EndpointConfig) -> None:
+    for script, intensity in config.statics.items():
+        result[script] = result.get(script, 0) + intensity
+
+
 def create_profile_on_config(profile: ProfileNormalized, config: ConfigNormalized) -> ProfileResult:
-    result = {}
+    result: ProfileResult = {}
+
     for service, entries in config.services.items():
-        for entry, scripts in entries.items():
-            for script in scripts:
-                result.setdefault(script, 0)
-                if profile.get(service, {}).get(entry) is not None:
-                    result[script] += math.ceil(profile[service][entry] / len(scripts))
+        for entry, entry_config in entries.items():
+            _add_endpoint_statics(result, entry_config)
+
+            source_intensity = profile.get(service, {}).get(entry)
+            if source_intensity is None:
+                continue
+            _add_endpoint_scripts(result, source_intensity, entry_config)
+
     result.update(config.statics)
     return result

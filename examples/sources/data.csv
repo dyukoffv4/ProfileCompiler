@@ -1,0 +1,6 @@
+service_1 - GET  - /endpoint/1/{}   ,100, 100 ,100
+service_1 - POST - /endpoint/2/{}   ,100, 100 ,100
+service_1 - GET  - /endpoint/2/{}   ,100, 100 ,100
+service_2 - PUT  - /endpoint/1/get  ,100, 100 ,100
+service_2 - GET  - /endpoint/1/get  ,100, 100 ,100
+service_2 - GET  - /endpoint/{}/get ,100, 100 ,100

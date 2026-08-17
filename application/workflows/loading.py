@@ -4,7 +4,7 @@ import json
 import csv
 from pathlib import Path
 
-from domain.configuration import ConfigNormalized, normalize_config, validate_config_structure
+from domain.configuration import ConfigNormalized, normalize_config
 from domain.profile import ProfileNormalized, normalize_profile
 from infrastructure.storage import load_json, load_csv
 
@@ -18,9 +18,6 @@ def load_and_normalize_config(source_path: Path) -> ConfigNormalized | None:
         return None
     except json.JSONDecodeError as error:
         print(f"Некорректный JSON в '{source_path}': {error}")
-        return None
-
-    if not validate_config_structure(source_config):
         return None
 
     try:

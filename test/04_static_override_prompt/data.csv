@@ -1,2 +1,0 @@
-inventory-service - GET - /inventory/{sku},200,100,10000
-inventory-service - POST - /inventory/reindex,40,20,2000
