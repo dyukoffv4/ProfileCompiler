@@ -3,7 +3,6 @@
 from pathlib import Path
 
 from application.cli.prompts import ask_confirmation
-from domain.configuration import restore_source_config
 from domain.profile import create_profile_on_config
 from infrastructure.storage import save_json
 
@@ -30,7 +29,7 @@ def _save_process(save_path: Path, save_data):
     return True
 
 
-def process(config_path: Path, output_config_path: Path, profile_path: Path, output_profile_path: Path) -> bool:
+def process(config_path: Path, profile_path: Path, output_path: Path) -> bool:
     # Обработать конфиг
 
     print("\n--- Загрузка конфига ---\n")
@@ -46,14 +45,6 @@ def process(config_path: Path, output_config_path: Path, profile_path: Path, out
 
     if not run_conflict_checks(normalized_config):
         return False
-    print()
-
-    # Сохранить конфиг
-
-    if output_config_path is None:
-        print("Новый конфиг не будет сохранен. Чтобы сохранить его укажите путь через --output-config.")
-    else:
-        _save_process(output_config_path, restore_source_config(normalized_config))
 
     # Обработать профиль
 
@@ -74,9 +65,9 @@ def process(config_path: Path, output_config_path: Path, profile_path: Path, out
 
     # Сохранить профиль
 
-    if output_profile_path is None:
+    if output_path is None:
         print("Собранный профиль не будет сохранен. Чтобы сохранить его укажите путь через --output.")
     else:
-        _save_process(output_profile_path, create_profile_on_config(normalized_profile, normalized_config))
+        _save_process(output_path, create_profile_on_config(normalized_profile, normalized_config))
 
     return True

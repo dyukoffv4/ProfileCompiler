@@ -93,6 +93,9 @@ def normalize_config(config: ConfigSource) -> ConfigNormalized:
                 )
 
             key = f"{method} {endpoint}"
+            if key in entries:
+                raise ValueError(f"Найден повтор endpoint после нормализации: {service}: {key}")
+
             entries[key] = EndpointConfig(
                 scripts=scripts,
                 statics=statics,
@@ -114,30 +117,6 @@ def normalize_config(config: ConfigSource) -> ConfigNormalized:
 
     intersections = sorted(set(global_statics) & internal_scripts)
     if intersections:
-        raise ValueError(
-            "Внешние statics пересекаются со скриптами внутри сервисов: "
-            + ", ".join(intersections)
-        )
+        raise ValueError("Внешние statics пересекаются со скриптами внутри сервисов: " + ", ".join(intersections))
 
     return NormalizedConfig(normalized, global_statics)
-
-
-def restore_source_config(config: ConfigNormalized) -> ConfigSource:
-    result = {"main": {}, "statics": config.statics}
-
-    for service, entries in config.services.items():
-        result["main"][service] = []
-        for key, entry_config in entries.items():
-            method, endpoint = key.split(" ", 1)
-            source_entry = {
-                "endpoint": endpoint,
-                "type": method,
-                "scripts": entry_config.scripts,
-            }
-            if entry_config.statics:
-                source_entry["statics"] = entry_config.statics
-            if entry_config.statics_diff is not True:
-                source_entry["statics_diff"] = entry_config.statics_diff
-            result["main"][service].append(source_entry)
-
-    return result

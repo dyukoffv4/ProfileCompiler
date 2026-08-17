@@ -6,13 +6,19 @@ from .endpoints import (
     print_endpoint_template_conflicts,
 )
 from .models import EndpointTemplateConflict, ScriptConflict
-from .scripts import find_static_script_conflicts
+from .scripts import (
+    find_script_conflicts,
+    find_static_script_conflicts,
+    print_script_conflicts,
+)
 
 __all__ = [
     "EndpointTemplateConflict",
     "ScriptConflict",
     "compile_endpoint_template",
     "find_endpoint_template_conflicts",
+    "find_script_conflicts",
     "find_static_script_conflicts",
     "print_endpoint_template_conflicts",
+    "print_script_conflicts",
 ]
