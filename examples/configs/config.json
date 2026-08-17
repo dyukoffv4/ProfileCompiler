@@ -16,8 +16,8 @@
           "script_12": 0.67
         },
         "statics": {
-          "script_12": 100,
-          "script_13": 200
+          "script_13": 10,
+          "script_14": 20
         }
       }
     ],
@@ -26,11 +26,13 @@
         "endpoint": "/endpoint/1/get",
         "type": "GET",
         "scripts": [
-          "script_21"
+          "script_21",
+          "script_22"
         ],
         "statics": {
-          "script_22": 300
-        }
+          "script_23": 30
+        },
+        "statics_diff": false
       },
       {
         "endpoint": "/endpoint/{}/get",
@@ -43,7 +45,7 @@
     ]
   },
   "statics": {
-    "script_23": 100,
-    "script_31": 200
+    "script_31": 100,
+    "script_32": 200
   }
 }
