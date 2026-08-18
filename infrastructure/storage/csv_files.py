@@ -14,5 +14,5 @@ def save_csv(path: str | Path, rows: list[list[str]], *, delimiter: str = ",") -
     """Записать строки в CSV-файл."""
     target = Path(path)
     target.parent.mkdir(parents=True, exist_ok=True)
-    with target.open("w", encoding="utf-8", newline="") as file:
+    with target.open("w", encoding="utf-8-sig", newline="") as file:
         csv.writer(file, delimiter=delimiter).writerows(rows)

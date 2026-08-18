@@ -22,7 +22,7 @@ def normalize_profile(source: ProfileSource) -> ProfileNormalized:
 def _add_endpoint_scripts(result: ProfileResult, source_intensity: int, config: EndpointConfig) -> None:
     scripts_intensity = source_intensity
     if config.statics_diff:
-        scripts_intensity -= sum(config.statics.values())
+        scripts_intensity = max(0, scripts_intensity - sum(config.statics.values()))
 
     if isinstance(config.scripts, list):
         if config.scripts:
